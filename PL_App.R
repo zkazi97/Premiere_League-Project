@@ -86,8 +86,8 @@ server <- function(input, output, session) {
   output$scatter <- renderPlotly({
     playersSelected = ratings %>%
       filter (Club == input$Team)
-      print(ggplotly( ggplot(playersSelected,tooltip = c("x","y","colour")) + 
-                      geom_point(aes(x=Fee, y=Rating,color = Rating,label = Player)) +
+      print(ggplotly( ggplot(playersSelected,aes(x=Fee, y=Rating, label = Player)) + 
+                      geom_point(color = "blue") +
                       labs(title = paste(input$Team, "Transfer Activity in 2010s"), x = "Fee (£ Millions)", y = "Average Rating for Club"))
         )
       }
